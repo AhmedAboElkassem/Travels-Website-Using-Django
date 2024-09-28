@@ -80,8 +80,8 @@ def flight(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
-            from_location = data.get('from_location')
-            to_location = data.get('to_location')
+            from_location = data.get('from')
+            to_location = data.get('to')
             date = data.get('date')
         except json.JSONDecodeError:
             return JsonResponse({'message': 'error', 'details': 'Invalid JSON data.'}, status=400)
@@ -114,3 +114,29 @@ def flight(request):
         return JsonResponse(flight_list, safe=False)
     
     return JsonResponse({'login': False, 'message': 'Invalid request method'}, status=405)
+def add_flights(request):
+    if request.method == 'POST':
+        try:
+            
+            data = json.loads(request.body)
+
+            
+            for flight_data in data:
+                flight = Flight(
+                    from_location=flight_data['from'],
+                    to_location=flight_data['to'],
+                    date=flight_data['date'],
+                    price=float(flight_data['price'].replace('$', '')),
+                    airline=flight_data['airline'],
+                    duration=flight_data['duration']
+                )
+                flight.save()
+
+            return JsonResponse({"message": "Flights added successfully!"}, status=201)
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    return JsonResponse({"error": "Invalid request method"}, status=400)
