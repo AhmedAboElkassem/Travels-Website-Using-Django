@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#mb(2nvbys1*q!fxgiul8#!^w0+&a@9+yw=9p6zte20y530wfb
 DEBUG = True
 
 ALLOWED_HOSTS = ['aboelkassem.pythonanywhere.com', 'localhost', '127.0.0.1']
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'airport',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     
 ]
 
