@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import json
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
-from .models import SignUp
+from .models import SignUp,Flight
 
 def sign_up(request):
     if request.method == 'POST':
@@ -74,4 +74,43 @@ def login(request):
         else:
             return JsonResponse({'login': False, 'message': 'Invalid password'}, status=400)
 
+    return JsonResponse({'login': False, 'message': 'Invalid request method'}, status=405)
+
+def flight(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            from_location = data.get('from_location')
+            to_location = data.get('to_location')
+            date = data.get('date')
+        except json.JSONDecodeError:
+            return JsonResponse({'message': 'error', 'details': 'Invalid JSON data.'}, status=400)
+        if not from_location or not to_location or not date:
+            return JsonResponse({'signup': False, 'message': 'All fields are required.'}, status=400)
+        
+        flights = Flight.objects.filter(
+            from_location__iexact=from_location,
+            to_location__iexact=to_location,
+            date=date
+        )
+
+        
+        if not flights.exists():
+            return JsonResponse({"message": "No flights found matching the criteria."}, status=404)
+
+        
+        flight_list = []
+        for flight in flights:
+            flight_list.append({
+                "id": flight.flight_id,
+                "from": flight.from_location,
+                "to": flight.to_location,
+                "date": flight.date.strftime("%Y-%m-%d"),
+                "price": f"${flight.price:.2f}",
+                "airline": flight.airline,
+                "duration": flight.duration,
+            })
+
+        return JsonResponse(flight_list, safe=False)
+    
     return JsonResponse({'login': False, 'message': 'Invalid request method'}, status=405)
