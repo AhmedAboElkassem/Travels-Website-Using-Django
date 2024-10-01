@@ -31,4 +31,20 @@ class Flight(models.Model):
 
     def __str__(self):
         return f"{self.airline} flight from {self.from_location} to {self.to_location} on {self.date}"
+class TravelerInfo(models.Model):
+    FirstName = models.CharField(max_length=30)
+    MiddleName = models.CharField(max_length=30)
+    LastName = models.CharField(max_length=30)
+    Suffix=models.CharField(max_length=30)
+    Dob=models.DateField()
+    email = models.EmailField('user email', unique=True)
+    phone = models.CharField(max_length=15)
+    RedressNumber=models.CharField(max_length=30)
+    knownTravelerNumber=models.CharField(max_length=30)
+    emergencyFirstName=models.CharField(max_length=30)
+    emergencyLastName=models.CharField(max_length=30)
+    emergencyEmail= models.EmailField('emergency email', unique=True)
+    emergencyPhone=models.CharField(max_length=15)
 
+    def __str__(self):
+        return f"information about {self.FirstName} {self.MiddleName}  {self.LastName}"

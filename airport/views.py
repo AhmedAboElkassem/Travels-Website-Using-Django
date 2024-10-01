@@ -4,7 +4,7 @@ from django.http import JsonResponse
 import json
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
-from .models import SignUp,Flight
+from .models import SignUp,Flight,TravelerInfo
 
 def sign_up(request):
     if request.method == 'POST':
@@ -133,6 +133,35 @@ def add_flights(request):
                 flight.save()
 
             return JsonResponse({"message": "Flights added successfully!"}, status=201)
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    return JsonResponse({"error": "Invalid request method"}, status=400)
+def traveler_info(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            traveler = TravelerInfo(
+            FirstName =data.get('firstName'),
+            MiddleName = data.get('middleName'),
+            LastName = data.get('lastName'),
+            Suffix=data.get('suffix'),
+            Dob=data.get('dob'),
+            email =data.get('email'),
+            phone = data.get('phone'),
+            RedressNumber=data.get('redressNumber'),
+            knownTravelerNumber=data.get('knownTravelerNumber'),
+            emergencyFirstName=data.get('emergencyFirstName'),
+            emergencyLastName=data.get('emergencyLastName'),
+            emergencyEmail=data.get('emergencyEmail'),
+            emergencyPhone=data.get('emergencyPhone')
+            )
+            traveler.save()
+
+            return JsonResponse({"message": "Info added successfully!"}, status=201)
 
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON data"}, status=400)
