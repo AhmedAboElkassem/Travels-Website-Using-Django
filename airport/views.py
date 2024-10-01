@@ -144,6 +144,12 @@ def traveler_info(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
+            
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+        try:
             traveler = TravelerInfo(
             FirstName =data.get('firstName'),
             MiddleName = data.get('middleName'),
@@ -160,12 +166,8 @@ def traveler_info(request):
             emergencyPhone=data.get('emergencyPhone')
             )
             traveler.save()
-
             return JsonResponse({"message": "Info added successfully!"}, status=201)
-
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON data"}, status=400)
         except Exception as e:
-            return JsonResponse({"error": str(e)}, status=500)
+             return JsonResponse({"error": str(e)}, status=500)
 
     return JsonResponse({"error": "Invalid request method"}, status=400)
