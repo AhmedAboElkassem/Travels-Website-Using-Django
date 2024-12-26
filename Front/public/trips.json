@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "from": "Egypt",
+    "to": "Tunisia",
+    "date": "2024-09-15",
+    "price": "$500",
+    "airline": "Air France",
+    "duration": "8h 30m"
+  },
+  {
+    "id": 2,
+    "from": "Egypt",
+    "to": "France",
+    "date": "2024-09-20",
+    "price": "$350",
+    "airline": "EgyptAir",
+    "duration": "5h"
+  },
+  {
+    "id": 3,
+    "from": "Egypt",
+    "to": "Morocco",
+    "date": "2024-09-25",
+    "price": "$450",
+    "airline": "Royal Air Maroc",
+    "duration": "6h 45m"
+  },
+  {
+    "id": 4,
+    "from": "Egypt",
+    "to": "Spain",
+    "date": "2024-09-30",
+    "price": "$550",
+    "airline": "Iberia",
+    "duration": "7h"
+  },
+  {
+    "id": 5,
+    "from": "Egypt",
+    "to": "Germany",
+    "date": "2024-10-05",
+    "price": "$600",
+    "airline": "Lufthansa",
+    "duration": "4h 30m"
+  },
+  {
+    "id": 6,
+    "from": "Egypt",
+    "to": "Italy",
+    "date": "2024-10-10",
+    "price": "$400",
+    "airline": "Alitalia",
+    "duration": "3h 50m"
+  },
+  {
+    "id": 7,
+    "from": "Egypt",
+    "to": "United States",
+    "date": "2024-10-15",
+    "price": "$900",
+    "airline": "Delta Airlines",
+    "duration": "12h 15m"
+  },
+  {
+    "id": 8,
+    "from": "Egypt",
+    "to": "United Kingdom",
+    "date": "2024-10-20",
+    "price": "$700",
+    "airline": "British Airways",
+    "duration": "5h 20m"
+  },
+  {
+    "id": 9,
+    "from": "Egypt",
+    "to": "Japan",
+    "date": "2024-10-25",
+    "price": "$1200",
+    "airline": "Japan Airlines",
+    "duration": "13h 45m"
+  },
+  {
+    "id": 10,
+    "from": "Egypt",
+    "to": "Australia",
+    "date": "2024-11-01",
+    "price": "$1500",
+    "airline": "Qantas",
+    "duration": "17h"
+  },
+  {
+    "id": 11,
+    "from": "Egypt",
+    "to": "Canada",
+    "date": "2024-11-05",
+    "price": "$850",
+    "airline": "Air Canada",
+    "duration": "11h 30m"
+  },
+  {
+    "id": 12,
+    "from": "Egypt",
+    "to": "Brazil",
+    "date": "2024-11-10",
+    "price": "$950",
+    "airline": "LATAM Airlines",
+    "duration": "15h"
+  },
+  {
+    "id": 13,
+    "from": "Egypt",
+    "to": "South Africa",
+    "date": "2024-11-15",
+    "price": "$650",
+    "airline": "South African Airways",
+    "duration": "8h 45m"
+  },
+  {
+    "id": 14,
+    "from": "Egypt",
+    "to": "China",
+    "date": "2024-11-20",
+    "price": "$1050",
+    "airline": "Air China",
+    "duration": "10h 30m"
+  },
+  {
+    "id": 15,
+    "from": "Egypt",
+    "to": "Russia",
+    "date": "2024-11-25",
+    "price": "$700",
+    "airline": "Aeroflot",
+    "duration": "6h 15m"
+  },
+  {
+    "id": 16,
+    "from": "Egypt",
+    "to": "Spain",
+    "date": "2024-09-30",
+    "price": "$5580",
+    "airline": "Aeroflot",
+    "duration": "9h"
+  }
+]
